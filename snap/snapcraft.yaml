@@ -1,6 +1,6 @@
 name: kiyanetwork
 base: core20 
-version: '3.0.0'
+version: '3.0.1'
 summary: network performance test tool
 description: |
   This is iperf, a tool for measuring network throughput
@@ -17,6 +17,7 @@ apps:
     plugs:
     - network
     - network-observe
+    - network-bind
 
   iw:
     command: usr/sbin/iw

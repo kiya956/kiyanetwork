@@ -1,0 +1,68 @@
+Source: wireless-tools
+Section: net
+Priority: optional
+Maintainer: Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Guus Sliepen <guus@debian.org>
+Standards-Version: 4.2.1
+Build-Depends: debhelper (>= 11), dpkg-dev (>= 1.16.1~)
+Homepage: http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html
+
+Package: wireless-tools
+Section: net
+Architecture: linux-any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Tools for manipulating Linux Wireless Extensions 
+ This package contains the Wireless tools, used to manipulate
+ the Linux Wireless Extensions. The Wireless Extension is an interface
+ allowing you to set Wireless LAN specific parameters and get the
+ specific stats.
+
+Package: libiw30
+Section: libs
+Architecture: linux-any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Wireless tools - library
+ Wireless tools are used to manipulate the Linux Wireless Extensions. The
+ Wireless Extension is an interface allowing you to set Wireless LAN specific
+ parameters and get the specific stats.
+ .
+ This package contains the dynamic library libiw.
+
+Package: libiw-dev
+Section: libdevel
+Architecture: linux-any
+Multi-Arch: same
+Depends: libiw30 (= ${binary:Version}), libc6-dev, ${misc:Depends}
+Description: Wireless tools - development files
+ Wireless tools are used to manipulate the Linux Wireless Extensions. The
+ Wireless Extension is an interface allowing you to set Wireless LAN specific
+ parameters and get the specific stats.
+ .
+ This package contains the header files and static version of libiw.
+
+Package: wireless-tools-udeb
+Section: debian-installer
+Architecture: linux-any
+XC-Package-Type: udeb
+Depends: ${shlibs:Depends}
+Description: Tools for manipulating Linux Wireless Extensions
+ This package contains the Wireless tools, used to manipulate the Linux
+ Wireless Extensions. The Wireless Extension is an interface allowing you to
+ set Wireless LAN specific parameters and get the specific stats.
+ .
+ This is a udeb of the wireless tools.
+
+Package: libiw30-udeb
+Section: debian-installer
+Architecture: linux-any
+XC-Package-Type: udeb
+Depends: ${shlibs:Depends}
+Description: Tools for manipulating Linux Wireless Extensions
+ This package contains the Wireless tools, used to manipulate the Linux
+ Wireless Extensions. The Wireless Extension is an interface allowing you to
+ set Wireless LAN specific parameters and get the specific stats.
+ .
+ This is a udeb of the wireless tools.

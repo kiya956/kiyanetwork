@@ -1,0 +1,13 @@
+Index: wireless-tools-30~pre9-12ubuntu1/Makefile
+===================================================================
+--- wireless-tools-30~pre9-12ubuntu1.orig/Makefile
++++ wireless-tools-30~pre9-12ubuntu1/Makefile
+@@ -150,7 +150,7 @@
+ 
+ # Compilation of the dynamic library
+ $(DYNAMIC): $(OBJS:.o=.so)
+-	$(CC) -shared -o $@ -Wl,-soname,$@ $(STRIPFLAGS) $(LIBS) $(LDFLAGS) -lc $^
++	$(CC) -shared -o $@ -Wl,-soname,$@ $(STRIPFLAGS) $^ $(LIBS) $(LDFLAGS) -lc
+ 
+ # Compilation of the static library
+ $(STATIC): $(OBJS:.o=.so)

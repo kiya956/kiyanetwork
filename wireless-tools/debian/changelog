@@ -1,0 +1,959 @@
+wireless-tools (30~pre9-13ubuntu1) disco; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - compiler-link-order.patch: libraries must be specified after the
+      object/library that needs them otherwise nothing is used from them.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+    - Add iwlist and iwevent to the wireless-tools udeb.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 31 Jan 2019 23:09:04 -0800
+
+wireless-tools (30~pre9-13) unstable; urgency=medium
+
+  * Call /sbin/ip instead of ifconfg in if-pre-up script. (Closes: 908886)
+  * Bump debian/compat to 11.
+  * Change Priority to optional.
+  * Bump Standards-Version.
+
+ -- Guus Sliepen <guus@debian.org>  Sat, 15 Sep 2018 16:35:08 +0200
+
+wireless-tools (30~pre9-12ubuntu1) artful; urgency=low
+
+  * Merge from Debian unstable.  Remaining changes:
+    - compiler-link-order.patch: libraries must be specified after the
+      object/library that needs them otherwise nothing is used from them.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+    - Add iwlist and iwevent to the wireless-tools udeb.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 27 Apr 2017 20:58:38 -0700
+
+wireless-tools (30~pre9-12) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS: Also use dh_auto_build for the udeb pass. Closes: #839800
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 05 Oct 2016 14:24:54 +0200
+
+wireless-tools (30~pre9-11) unstable; urgency=medium
+
+  * Add ConditionPathExists=/etc/iftab to ifrename.service. Closes: #823028
+  * Fix Documentation URL in ifrename.service.
+  * Bump Standards-Version.
+
+ -- Guus Sliepen <guus@debian.org>  Sat, 30 Apr 2016 20:28:44 +0200
+
+wireless-tools (30~pre9-10) unstable; urgency=medium
+
+  * Fix libiw.so symlink in the libiw-dev package. Closes: #822391
+
+ -- Guus Sliepen <guus@debian.org>  Sun, 24 Apr 2016 12:59:01 +0200
+
+wireless-tools (30~pre9-9) unstable; urgency=medium
+
+  [ Elliot Mitchell ]
+  * Support multiple 802.11 tool scripts for ifupdown. Closes: #154367
+    - By default, the if-pre-up and if-post-down scripts will now check
+      if the interface actually supports wireless-tools, otherwise they
+      will exit without an error. Closes: #445356
+
+  [ A. Costa ]
+  * Fixed a typo in iwlist.8. Closes: #683635
+
+  [ Guus Sliepen ]
+  * Convert debian/rules to dh.
+  * Bump Standards-Version.
+  * Bump debian/compat.
+  * Source /lib/lsb/init-functions in ifrename's init script.
+  * Add a systemd service file for ifrename.
+
+ -- Guus Sliepen <guus@debian.org>  Thu, 24 Mar 2016 22:31:00 +0100
+
+wireless-tools (30~pre9-8ubuntu2) artful; urgency=medium
+
+  * No-change rebuild to pick up -fPIE compiler default in static
+    libraries
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 21 Apr 2017 21:00:09 +0000
+
+wireless-tools (30~pre9-8ubuntu1) quantal; urgency=low
+
+  * Merge with Debian; remaining changes:
+    - compiler-link-order.patch: libraries must be specified after the
+      object/library that needs them otherwise nothing is used from them.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+    - Add iwlist and iwevent to the wireless-tools udeb.
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Thu, 03 May 2012 09:24:49 -0400
+
+wireless-tools (30~pre9-8) unstable; urgency=low
+
+  * Add type to IMPORT keyword in ifrename's udev rules file. Closes: #650606
+
+ -- Guus Sliepen <guus@debian.org>  Fri, 23 Dec 2011 16:02:18 +0100
+
+wireless-tools (30~pre9-7) unstable; urgency=low
+
+  * Add missing Build-Depend on dpkg-dev. Closes: #644744
+  * Set key values after setting default key and key mode. Closes: #624603
+
+ -- Guus Sliepen <guus@debian.org>  Mon, 14 Nov 2011 11:09:01 +0100
+
+wireless-tools (30~pre9-6) unstable; urgency=low
+
+  * Apply patch from Riku Voipio to support multiarch. Closes: #642434
+  * Bump Standards-Version.
+  * Provide build-arch and build-indep targets in debian/rules. 
+  * Use /usr/share/dpkg/default.mk in debian/rules.
+  * Allow CFLAGS to be set from debian/rules.
+
+ -- Guus Sliepen <guus@debian.org>  Sun, 02 Oct 2011 21:43:21 +0200
+
+wireless-tools (30~pre9-5ubuntu2) precise; urgency=low
+
+  * No-change rebuild against current pkgbinarymangler to fix broken
+    md5sums. (see LP #875466)
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Wed, 29 Feb 2012 18:00:39 +0100
+
+wireless-tools (30~pre9-5ubuntu1) oneiric; urgency=low
+
+  * Merge with Debian; remaining changes (LP: #777358):
+    - compiler-link-order.patch: libraries must be specified after the
+      object/library that needs them otherwise nothing is used from them.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+    - Add iwlist and iwevent to the wireless-tools udeb.
+  * debian/patches/series: drop the debian-* patches introduced from various
+    previous Ubuntu changes.
+  * debian/rules,
+    debian/wireless-tools.install:
+    yank out rfkill, which is now shipped in its own package which we get from
+    Debian. (LP: #711860)
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Wed, 04 May 2011 14:50:35 -0400
+
+wireless-tools (30~pre9-5) unstable; urgency=low
+
+  * Apply patch from Steve Langesak clarifying the iftab manpage.
+    Closes: #528324
+  * Bump Standards-Version.
+  * Only build wireless-tools on Linux.
+
+ -- Guus Sliepen <guus@debian.org>  Sun, 04 Jul 2010 11:18:28 +0200
+
+wireless-tools (30~pre9-4) unstable; urgency=low
+
+  * Let ifrename udev rules be priority 19 instead of 019. Closes: #560801
+  * Use udev rules from upstream. Closes: #556441
+  * Depend on ${misc:Depends}.
+
+ -- Guus Sliepen <guus@debian.org>  Sat, 23 Jan 2010 23:54:32 +0100
+
+wireless-tools (30~pre9-3ubuntu6) natty; urgency=low
+
+  * compiler-link-order.patch: libraries must be specified after the
+    object/library that needs them otherwise nothing is used from them.
+    This used to work with older compilers but is not guarenteed behaviour,
+    adjust ordering to match.
+  * header-with-2.6.36.patch (dropped): this patch is no longer required.
+
+ -- Andy Whitcroft <apw@canonical.com>  Fri, 17 Dec 2010 17:10:44 +0000
+
+wireless-tools (30~pre9-3ubuntu5) natty; urgency=low
+
+  * header-with-2.6.36.patch: Replace the if.h header used in iwlib.h by
+    the one provided by the kernel instead of using the one from libc. The
+    kernel headers now provide the same structures and linux/if.h would
+    otherwise conflict, since it gets pulled in from wireless.h. (LP: #672584)
+
+ -- Mathieu Trudel-Lapierre <mathieu-tl@ubuntu.com>  Tue, 09 Nov 2010 15:29:06 +0000
+
+wireless-tools (30~pre9-3ubuntu4) lucid; urgency=low
+
+  * Invoke rfkill/version.sh using /bin/sh (V2)
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Tue, 23 Feb 2010 08:28:46 -0700
+
+wireless-tools (30~pre9-3ubuntu3) lucid; urgency=low
+
+  * Invoke rfkill/version.sh using /bin/sh 
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Tue, 23 Feb 2010 15:11:30 +0000
+
+wireless-tools (30~pre9-3ubuntu2) lucid; urgency=low
+
+  * Update to rfkill-0.4 from http://git.sipsolutions.net/rfkill.git (tag v0.4)
+      default install to $(PREFIX)/sbin
+      flush output after events
+      print time instead of useless text
+      Move the man page to section 8
+      update rfkill.h from kernel 2.6.33
+      Add "wlan" and "ultrawideband" as aliases for "wifi" and "uwb".
+      Rearrange the help text for block & unblock.
+      Constification.
+      Return error codes instead of exiting.
+      Refactor rfkill index/type lookup: move it below rfkill_block.
+      Add filtering to "rfkill list".
+      change manpage for new rfkill list behaviour
+      Tweak version handling to allow vendor-specific suffixes without patching.
+      Help text: output rfkill type names from an array instead of a static string.
+      Add rfkill type "fm" to the man page.
+      version 0.4
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Tue, 23 Feb 2010 14:12:59 +0000
+
+wireless-tools (30~pre9-3ubuntu1) lucid; urgency=low
+
+  * Merge with Debian; remaining changes:
+    - Fix confusing text in iftab(5) about mapping ordering.
+    - Rather than just warning about NULL MAC addresses, ignore them totally
+      and treat their appearance as an error, and try and hint where the
+      NULL MAC address is so the user can remove it.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+    - Update to rfkill-0.3.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 19 Jan 2010 16:27:23 +0100
+
+wireless-tools (30~pre9-3) unstable; urgency=low
+
+  * Move (correctly) the scripts back to pre-up and post-down, since the
+    wireless parameters must be fully configured before we can acquire an
+    address through DHCP. Closes: #558476, #558221, #552093, #544883
+  * Try to deal with the wireless driver madness by trying to configure all
+    parameters before the interface is brought up, remembering which parameters
+    failed to be set, and retrying those after bringing up the interface in the
+    pre-up script.
+
+ -- Guus Sliepen <guus@debian.org>  Fri, 18 Dec 2009 15:46:42 +0100
+
+wireless-tools (30~pre9-2) unstable; urgency=low
+
+  * Ensure existing pre-up and post-down scripts are properly moved to up and
+    down. Closes: #558221
+
+ -- Guus Sliepen <guus@debian.org>  Fri, 27 Nov 2009 17:28:41 +0100
+
+wireless-tools (30~pre9-1) unstable; urgency=low
+
+  * New upstream release.
+    - Includes fix for Czech manpage for iwconfig.
+    - Does not redefine inline keyword on recent compilers anymore.
+      Closes: #548192
+    - Prevents huge memory allocations when scanning. Closes: #541648
+    - Does not use NAME="%k" in 19-udev-ifrename.rules anymore. Closes: #556441
+    - Fixes iwlist scan on 64bit platforms again. Closes: #496481
+  * Convert source package to 3.0 (quilt) format.
+  * Bump Standars-Version.
+
+ -- Guus Sliepen <guus@debian.org>  Thu, 26 Nov 2009 15:57:33 +0000
+
+wireless-tools (30~pre8-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 10 Mar 2009 00:28:50 +0100
+
+wireless-tools (30~pre7-1) experimental; urgency=low
+
+  * New upstream release.
+    - Fixes output of "iwlist scan" on 64 bit platforms. Closes: #496481
+  * Bump Standards-Version.
+  * Depend on debhelper >= 5.0.44~ for dh_installifupdown.
+  * Add a genuine copyright notice to the copyright file.
+  * Fix Czech manpage for iwconfig.
+
+ -- Guus Sliepen <guus@debian.org>  Thu, 25 Sep 2008 20:13:58 +0200
+
+wireless-tools (30~pre6-1) experimental; urgency=low
+
+  * New upstream release.
+  * Move pre-up script to up, because most new kernel drivers for wireless
+    cards only accept certain configuration after the interface has been
+    brought up. This may break older drivers that only accept configuration
+    when the interface is down.
+  * Use dh_installifupdown to install network scripts.
+
+ -- Guus Sliepen <guus@debian.org>  Sun, 20 Jan 2008 15:18:39 +0100
+
+wireless-tools (30~pre5-1) experimental; urgency=low
+
+  * New upstream release.
+  * Fix installation of French manpages.
+  * Remove unused dependency on libm from the binaries.
+  * Use -t option in ifrename's init script. Closes: #351185
+  * Move init script to S37.
+
+ -- Guus Sliepen <guus@debian.org>  Fri, 07 Dec 2007 16:48:44 +0100
+
+wireless-tools (30~pre3-1) experimental; urgency=low
+
+  * New upstream release.
+    - No longer requires /etc/iftab when using the -n option. Closes: #446684
+  * Install the ifrename udev rule file.
+
+ -- Guus Sliepen <guus@debian.org>  Fri, 19 Oct 2007 00:58:43 +0200
+
+wireless-tools (30~pre1-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Mon, 15 Oct 2007 13:56:27 +0200
+
+wireless-tools (29-2ubuntu6) karmic; urgency=low
+
+  * Don't try to outsmart the compiler and don't redefine `inline' in an
+    installed header file. LP: #435793.
+
+    /* Make gcc understant that when we say inline, we mean it.
+     * I really hate when the compiler is trying to be more clever than me,
+     * because in this case gcc is not able to figure out functions with a
+     * single call site, so not only I have to tag those functions inline
+     * by hand, but then it refuse to inline them properly.
+     * Total saving for iwevent : 150B = 0.7%.
+     * Fortunately, in gcc 3.4, they now automatically inline static functions
+     * with a single call site. Hurrah !
+     * Jean II */
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 24 Sep 2009 13:01:03 +0200
+
+wireless-tools (29-2ubuntu5) karmic; urgency=low
+
+  * Update to rfkill-0.3
+    add copyright notices
+    remove copyright notice from file
+    resync rfkill.h with kernel
+    version 0.3
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Thu, 03 Sep 2009 20:21:31 -0600
+
+wireless-tools (29-2ubuntu4) karmic; urgency=low
+
+  * Update to rfkill-0.2
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Wed, 26 Aug 2009 09:52:48 -0600
+
+wireless-tools (29-2ubuntu3) karmic; urgency=low
+
+  * Use sh to execute rfkill/version.sh
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Fri, 24 Jul 2009 10:28:26 -0600
+
+wireless-tools (29-2ubuntu2) karmic; urgency=low
+
+  * Added rfkill from sipsolutions.net
+    http://git.sipsolutions.net/rfkill.git
+    HEAD 942974036993a84d0beede0c1bbc19cdd3e9db40
+    Added rfkill/COPYING to debian/copyright
+    Added rfkill/README to debian/README.Debian
+
+ -- Tim Gardner <tim.gardner@canonical.com>  Mon, 20 Jul 2009 13:44:55 -0600
+
+wireless-tools (29-2ubuntu1) karmic; urgency=low
+
+  * Merge from Debian unstable, remaining changes:
+    - Fix confusing text in iftab(5) about mapping ordering.
+    - Rather than just warning about NULL MAC addresses, ignore them totally
+      and treat their appearance as an error, and try and hint where the
+      NULL MAC address is so the user can remove it.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 11 May 2009 08:55:27 +0000
+
+wireless-tools (29-1.1ubuntu2) jaunty; urgency=low
+
+  * Revert change to bring up the interface before changing wireless
+    settings; the softmac driver this was implemented for is now
+    obsolete, no other drivers are reported to need it, and it
+    introduces other problems such as breaking PPP interfaces
+    (LP: #268519) and preventing configuration of some settings such as
+    hardware addresses (LP: #219520).
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 14 Nov 2008 21:13:27 +0000
+
+wireless-tools (29-1.1ubuntu1) jaunty; urgency=low
+
+  * Merge from Debian unstable, remaining changes:
+    - Fix confusing text in iftab(5) about mapping ordering.
+    - Rather than just warning about NULL MAC addresses, ignore them totally
+      and treat their appearance as an error, and try and hint where the
+      NULL MAC address is so the user can remove it.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+    - Bring up the interface before making any changes to the wireless
+      settings - required for at least softmac drivers.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 14 Nov 2008 05:34:45 +0000
+
+wireless-tools (29-1ubuntu2) hardy; urgency=low
+
+  * Dropped change:
+    - Don't diverge unnecessarily from upstream on socket.h header
+      inclusions, this only applies to ancient versions of the
+      wireless.h header that won't be shipped in the binary packages
+      (current versions of the header have a proper #ifdef __KERNEL__ guard)
+
+ -- Steve Langasek <vorlon@debian.org>  Wed, 28 Nov 2007 16:49:17 -0800
+
+wireless-tools (29-1ubuntu1) hardy; urgency=low
+
+  * Merge from Debian unstable, remaining changes:
+    - Fix confusing text in iftab(5) about mapping ordering.
+    - Use <sys/socket.h> like the socket(2) manpage says.
+    - Rather than just warning about NULL MAC addresses, ignore them totally
+      and treat their appearance as an error, and try and hint where the
+      NULL MAC address is so the user can remove it.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+    - Bring up the interface before making any changes to the wireless
+      settings - required for at least softmac drivers.
+    - Set Ubuntu maintainer address.
+  * Use sys/socket.h instead of linux/socket.h for the new version 21
+    and 22 headers as well
+
+ -- Steve Langasek <vorlon@debian.org>  Tue, 27 Nov 2007 18:10:48 -0800
+
+wireless-tools (29-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Mon, 15 Oct 2007 10:55:49 +0200
+
+wireless-tools (29~pre22-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Sun, 01 Jul 2007 18:03:58 +0200
+
+wireless-tools (29~pre21-2) unstable; urgency=low
+
+  * Don't look at LINUX_VERSION_CODE, only use generic header files in
+    iwlib.h. Closes: #425485
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 22 May 2007 10:27:46 +0200
+
+wireless-tools (29~pre21-1) unstable; urgency=low
+
+  * New upstream release. Closes: #421569
+
+ -- Guus Sliepen <guus@debian.org>  Thu, 03 May 2007 13:55:01 +0200
+
+wireless-tools (29~pre20-1ubuntu1) gutsy; urgency=low
+
+  * Resynchronise with Debian. Remaining changes:
+    - Fix confusing text in iftab(5) about mapping ordering.
+    - Use <sys/socket.h> like the socket(2) manpage says.
+    - Rather than just warning about NULL MAC addresses, ignore them totally
+      and treat their appearance as an error, and try and hint where the
+      NULL MAC address is so the user can remove it.
+    - Remove the ifrename package; it conflicts with our own udev package
+      which provides /etc/iftab support.
+    - Bring up the interface before making any changes to the wireless
+      settings - required for at least softmac drivers.
+  * Set Ubuntu maintainer address.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Fri, 27 Apr 2007 14:37:37 +0100
+
+wireless-tools (29~pre20-1) unstable; urgency=low
+
+  * New upstream release.
+  * Update debian/copyright and remove section about kernel versions from
+    README.Debian.
+  * Fix compiler warning about wrong format specifiers in iwlist.c.
+
+ -- Guus Sliepen <guus@debian.org>  Sun, 22 Apr 2007 12:51:43 +0200
+
+wireless-tools (29~pre18-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 18 Apr 2007 10:18:16 +0200
+
+wireless-tools (29~pre17-1) experimental; urgency=low
+
+  * New upstream release. Closes: #398018
+  * Add LSB section to the ifrename init script.
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 27 Mar 2007 10:39:33 +0200
+
+wireless-tools (28+29pre10-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Thu,  4 May 2006 22:13:07 +0200
+
+wireless-tools (28+29pre9-2) experimental; urgency=low
+
+  * Compile with default gcc version. Closes: #364885
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 26 Apr 2006 14:22:02 +0200
+
+wireless-tools (28+29pre9-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Fri, 14 Apr 2006 22:46:20 +0200
+
+wireless-tools (28+29pre7-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 11 Apr 2006 20:10:21 +0200
+
+wireless-tools (28-1ubuntu3) feisty; urgency=low
+
+  * Bring up the interface before making any changes to the wireless
+    settings - required for at least softmac drivers (Ubuntu: #63664)
+
+ -- Matthew Garrett <mjg59@srcf.ucam.org>  Thu, 21 Dec 2006 04:09:56 +0000
+
+wireless-tools (28-1ubuntu2) edgy; urgency=low
+
+  * Remove the ifrename package, it conflicts with our own udev package
+    which provides /etc/iftab support.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Wed, 23 Aug 2006 09:36:17 +0200
+
+wireless-tools (28-1ubuntu1) edgy; urgency=low
+
+  [ Ongoing Merge Process ]
+  * Merge from debian unstable.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Wed, 28 Jun 2006 23:40:55 +0100
+
+wireless-tools (28-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 11 Apr 2006 19:52:34 +0200
+
+wireless-tools (27+28pre16-1) unstable; urgency=low
+
+  * New upstream release.
+  * Move the symlink /lib/libiw.so back to /usr/lib. Closes: #360372
+
+ -- Guus Sliepen <guus@debian.org>  Wed,  5 Apr 2006 13:51:59 +0200
+
+wireless-tools (27+28pre15-1) unstable; urgency=low
+
+  * New upstream release.
+  * Move udeb library dependency to shlib file (patch from Frans Pop).
+    Closes: #357802
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 21 Mar 2006 12:30:13 +0100
+
+wireless-tools (27+28pre14-1) unstable; urgency=low
+
+  * New upstream release.
+  * Move static library to /usr/lib. Closes: #350707
+  * Remove /etc/iftab on purge. Closes: #345991
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 14 Feb 2006 12:29:31 +0100
+
+wireless-tools (27+28pre13-1ubuntu2) dapper; urgency=low
+
+  * Don't run the init script if the udev renaming rules are in place.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Thu,  9 Feb 2006 22:30:07 +0000
+
+wireless-tools (27+28pre13-1ubuntu1) dapper; urgency=low
+
+  * Resynchronise with Debian.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Mon, 30 Jan 2006 09:54:45 +0000
+
+wireless-tools (27+28pre13-1) unstable; urgency=low
+
+  * New upstream release.
+  * Stricter version dependency on libiw28. Closes: #345146
+
+ -- Guus Sliepen <guus@debian.org>  Fri, 30 Dec 2005 19:18:46 +0100
+
+wireless-tools (27+28pre11-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fix installation of translated manpages.
+
+ -- Guus Sliepen <guus@debian.org>  Fri,  2 Dec 2005 12:30:21 +0100
+
+wireless-tools (27+28pre10-1ubuntu1) dapper; urgency=low
+
+  * Resynchronise with Debian.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Mon, 31 Oct 2005 06:49:46 -0500
+
+wireless-tools (27+28pre10-1) unstable; urgency=low
+
+  * New upstream release. Closes: #272662
+
+ -- Guus Sliepen <guus@debian.org>  Mon, 17 Oct 2005 01:17:10 +0200
+
+wireless-tools (27+28pre9-1) unstable; urgency=low
+
+  * New upstream release.
+  * Put manpages in the right packages. Closes: #323223
+  * Fix mistake in ifrename's init script that prevented it from running.
+
+ -- Guus Sliepen <guus@debian.org>  Wed,  7 Sep 2005 12:59:48 +0200
+
+wireless-tools (27+28pre8-1ubuntu4) breezy; urgency=low
+
+  * Make the NULL MAC address error a little less scary, and try and hint
+    where it is so the user can remove it.  (Ubuntu #15342).
+
+ -- Scott James Remnant <scott@ubuntu.com>  Mon, 19 Sep 2005 12:52:12 +0100
+
+wireless-tools (27+28pre8-1ubuntu3) breezy; urgency=low
+
+  * Rather than just warning about NULL MAC addresses, ignore them totally
+    and treat their appearance as an error.  (Ubuntu #13993).
+
+ -- Scott James Remnant <scott@ubuntu.com>  Sat, 27 Aug 2005 00:53:35 +0100
+
+wireless-tools (27+28pre8-1ubuntu2) breezy; urgency=low
+
+  * Enable takeover support in ifrename startup script, this will allow
+    interfaces to swap names.  (Ubuntu #8391, #10240, #13551).
+
+ -- Scott James Remnant <scott@ubuntu.com>  Thu, 18 Aug 2005 02:23:57 +0100
+
+wireless-tools (27+28pre8-1ubuntu1) breezy; urgency=low
+
+  * Resynchronise with Debian, resolving merge conflicts (Ubuntu #11980)
+  * New version is greater than 28pre3, so this should close #11434
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Wed, 29 Jun 2005 11:00:47 +0000
+
+wireless-tools (27+28pre8-1) unstable; urgency=low
+
+  * New upstream release.
+  * Use hyphens instead of underscores in README.Debian. Closes: #309805
+
+ -- Guus Sliepen <guus@debian.org>  Mon, 13 Jun 2005 11:41:28 +0200
+
+wireless-tools (27-3ubuntu2) breezy; urgency=low
+
+  * Use <sys/socket.h> like the socket(2) manpage says.
+
+ -- LaMont Jones <lamont@ubuntu.com>  Mon, 23 May 2005 10:43:12 -0600
+
+wireless-tools (27-3ubuntu1) breezy; urgency=low
+
+  * Resynchronise with Debian.
+
+ -- Scott James Remnant <scott@ubuntu.com>  Fri, 15 Apr 2005 00:00:56 +0100
+
+wireless-tools (27-3) unstable; urgency=low
+
+  * Add a post-down script that reverts any wireless setting present in
+    /etc/network/interfaces to sane defaults. Closes: #303782
+  * Add missing wireless-ap option. Closes: #303784
+  * Add init script that runs ifrename on system startup. Closes: #243382
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 13 Apr 2005 12:51:03 +0200
+
+wireless-tools (27-2) unstable; urgency=low
+
+  * Backport fix from 28pre4 for MadWiFi scanning.
+  * Backport fix from 28pre4 for dashes in interface names. Closes: #289657
+
+ -- Guus Sliepen <guus@debian.org>  Sat,  5 Feb 2005 12:21:30 +0100
+
+wireless-tools (27-1ubuntu1) hoary; urgency=low
+
+  * fixed weird fromulation in iftab manpage (closes ubuntu bug #5727)
+
+ -- Oliver Grawert (ogra) <hostmaster@grawert.net>  Thu, 17 Mar 2005 20:23:25 +0100
+
+wireless-tools (27-1) unstable; urgency=low
+
+  * New upstream release, that "hopefully will help the prompt release of the
+    new stable Debian ;-)" Thanks, Jean!
+
+ -- Guus Sliepen <guus@debian.org>  Sat,  6 Nov 2004 15:03:40 +0100
+
+wireless-tools (26+27pre28-1) unstable; urgency=low
+
+  * New upstream release. Closes: #271574
+
+ -- Guus Sliepen <guus@debian.org>  Thu, 28 Oct 2004 16:12:36 +0200
+
+wireless-tools (26+27pre26-2) unstable; urgency=low
+
+  * Fill in version number in libiw27.shlibs by hand. Closes: #275550
+
+ -- Guus Sliepen <guus@debian.org>  Fri,  8 Oct 2004 22:36:29 +0200
+
+wireless-tools (26+27pre26-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fix -c option. Closes: #272522
+  * Let wireless-tools depend on same version of libiw.
+    Closes: #269520, #272431
+
+ -- Guus Sliepen <guus@debian.org>  Wed,  6 Oct 2004 16:49:49 +0200
+
+wireless-tools (26+27pre25-2) unstable; urgency=low
+
+  * Really remove version requirements from description.
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 18 Aug 2004 13:00:03 +0000
+
+wireless-tools (26+27pre25-1) unstable; urgency=low
+
+  * New upstream release. Closes: #264533
+  * Drop kernel version requirements from description. Closes: #263342
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 18 Aug 2004 14:55:22 +0200
+
+wireless-tools (26+27pre22-1) unstable; urgency=low
+
+  * New upstream release.
+  * Fix encoding of French manpages. Closes: #247302
+  * Use hyphens instead of underscores in wireless(7) and related
+    documentation. Closes: #245436
+  * Add Provides: libiw27 to libiw27-udeb. Closes: #250334
+  * Make iw_get_basic_config() idiot kernel driver proof. Closes: #251277
+
+ -- Guus Sliepen <guus@debian.org>  Wed,  2 Jun 2004 16:30:27 +0000
+
+wireless-tools (26+27pre21-1) unstable; urgency=low
+
+  * New upstream release.
+  * Apply patch from upstream author to if-pre-up.d script,
+    so options are processed in more or less the same order as the
+    PCMCIA scripts do. Closes: #246062
+  * Use underscores in wireless(7). Closes: #245436
+
+ -- Guus Sliepen <guus@debian.org>  Thu, 29 Apr 2004 15:19:30 +0200
+
+wireless-tools (26+27pre20-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Thu, 15 Apr 2004 15:30:17 +0200
+
+wireless-tools (26+27pre18-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove build-depends on di-packages-build, since debhelper can now
+    create udebs. Closes: #239492
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 30 Mar 2004 21:19:02 +0200
+
+wireless-tools (26+27pre16-1) unstable; urgency=low
+
+  * New upstream release. Closes: #236670
+  * Create a new binary package ifrename.
+
+ -- Guus Sliepen <guus@debian.org>  Sat, 13 Mar 2004 12:17:28 +0100
+
+wireless-tools (26+27pre15-1) unstable; urgency=low
+
+  * New upstream release. Closes: #236136
+
+ -- Guus Sliepen <guus@debian.org>  Sun,  7 Mar 2004 15:30:50 +0100
+
+wireless-tools (26+27pre10-3) unstable; urgency=low
+
+  * Add patch for compatibility with drivers using old version of wireless
+    extensions. Closes: #235032
+
+ -- Guus Sliepen <guus@debian.org>  Fri, 27 Feb 2004 11:03:13 +0100
+
+wireless-tools (26+27pre10-2) unstable; urgency=low
+
+  * Make sure wireless-tools package depends on latest version of libiw27.
+    Closes: #234078
+  * Build udeb for libiw. Closes: #234677
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 25 Feb 2004 12:24:55 +0100
+
+wireless-tools (26+27pre10-1) unstable; urgency=low
+
+  * New upstream release.
+  * Make sure README.Debian is in the debs. Closes: #231848
+
+ -- Guus Sliepen <guus@debian.org>  Sat, 21 Feb 2004 16:47:25 +0100
+
+wireless-tools (26+27pre9-2) unstable; urgency=low
+
+  * Build udeb binaries without needing -lm. Closes: #230146
+
+ -- Guus Sliepen <guus@debian.org>  Sun,  1 Feb 2004 17:02:20 +0100
+
+wireless-tools (26+27pre9-1) unstable; urgency=low
+
+  * New upstream release. Closes: #225951
+  * Reduce size of binaries in udeb. Closes: #228797
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 21 Jan 2004 15:48:52 +0100
+
+wireless-tools (26+27pre7-3) unstable; urgency=low
+
+  * Fix typo in pre-up script.
+
+ -- Guus Sliepen <guus@debian.org>  Sun, 18 Jan 2004 15:34:38 +0100
+
+wireless-tools (26+27pre7-2) unstable; urgency=low
+
+  * Provide udeb package. Closes: #225587
+
+ -- Guus Sliepen <guus@debian.org>  Sat, 10 Jan 2004 19:36:31 +0100
+
+wireless-tools (26+27pre7-1) unstable; urgency=low
+
+  * New upstream release. Closes: #197909
+  * Don't quote options, except nick, nwid and nick. Closes: #224305
+  * Add extra directives for powermanagement (see README.Debian).
+
+ -- Guus Sliepen <guus@debian.org>  Sun, 14 Dec 2003 10:41:03 +0100
+
+wireless-tools (26-6) unstable; urgency=low
+
+  * Use eval for $IF_WIRELESS_KEY. Closes: #224079
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 16 Dec 2003 18:38:35 +0100
+
+wireless-tools (26-5) unstable; urgency=low
+
+  * Use $IFACE in the pre-up script again. Closes: #223285
+
+ -- Guus Sliepen <guus@debian.org>  Tue,  9 Dec 2003 11:17:41 +0100
+
+wireless-tools (26-4) unstable; urgency=low
+
+  * There should be no need to know the details of iwconfig's command line
+    parsing, therefore pre-up directives in /etc/network/interfaces may
+    contain spaces and do not need to be quoted. Support for multiple keys
+    is added using new directives (see README.Debian). Closes: #220473
+  * Fix typo in manpage. Closes: #221844
+
+ -- Guus Sliepen <guus@debian.org>  Sat, 22 Nov 2003 13:08:37 +0100
+
+wireless-tools (26-3) unstable; urgency=low
+
+  * Build copies of the tools for each version of wireless extensions,
+    use iwredir to select the right copy at runtime. Closes: #220240, #210249
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 11 Nov 2003 23:09:42 +0100
+
+wireless-tools (26-2) unstable; urgency=low
+
+  * Quote environment variables passed to pre-up script. Closes: #219212
+
+ -- Guus Sliepen <guus@debian.org>  Wed,  5 Nov 2003 10:31:54 +0100
+
+wireless-tools (26-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Guus Sliepen <guus@debian.org>  Wed, 18 Jun 2003 13:53:45 +0200
+
+wireless-tools (25-4) unstable; urgency=low
+
+  * Make sure conffiles are not registered twice. Closes: #196362
+  * libiw-dev belongs to section libdevel.
+  * Correct dependency on debhelper.
+
+ -- Guus Sliepen <guus@debian.org>  Sat, 14 Jun 2003 18:10:29 +0200
+
+wireless-tools (25-3) unstable; urgency=low
+
+  * Add libiw-dev package so people can compile statically against libiw.
+    No shared library yet, the API hasn't stabilised and the soname changes
+    way too often.
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 21 Jan 2003 15:31:19 +0100
+
+wireless-tools (25-2) unstable; urgency=low
+
+  * Set channel/frequency after setting mode in pre-up script. Closes: #164012
+
+ -- Guus Sliepen <guus@debian.org>  Thu, 10 Oct 2002 20:40:08 +0200
+
+wireless-tools (25-1) unstable; urgency=low
+
+  * New upstream release. Closes: #150632
+  * Compile with private copy of wireless extensions v15. Closes: #150055
+
+ -- Guus Sliepen <guus@debian.org>  Tue, 20 Aug 2002 14:24:34 +0200
+
+wireless-tools (24-1) unstable; urgency=low
+
+  * New upstream release. Closes: #144555, #144814
+
+ -- Guus Sliepen <guus@sliepen.warande.net>  Sun, 28 Apr 2002 10:08:28 +0200
+
+wireless-tools (23-2) unstable; urgency=low
+
+  * Use eval when executing $IWCONFIG. Closes: #141417
+
+ -- Guus Sliepen <guus@sliepen.warande.net>  Sun,  7 Apr 2002 14:06:59 +0200
+
+wireless-tools (23-1) unstable; urgency=low
+
+  * New upstream release.
+  * Added "key" and "commit" commands for the if-pre-up.d script.
+    Closes: #129890
+
+ -- Guus Sliepen <guus@sliepen.warande.net>  Fri, 25 Jan 2002 11:29:45 +0100
+
+wireless-tools (22+23beta3-3) unstable; urgency=low
+
+  * Fixed if-pre-up.d script. Closes: #113128
+
+ -- Guus Sliepen <guus@sliepen.warande.net>  Wed, 12 Dec 2001 23:40:17 +0100
+
+wireless-tools (22+23beta3-2) unstable; urgency=low
+
+  * Don't build libraries for now. Closes: #120538
+  * Fix gcc-3.0 compiler warnings.
+
+ -- Guus Sliepen <guus@sliepen.warande.net>  Wed, 21 Nov 2001 20:25:08 +0100
+
+wireless-tools (22+23beta3-1) unstable; urgency=low
+
+  * I have taken over this package from Björn Andersson.
+    Closes: #81295, #90421, #91909, #93904, #96229, #103935, #104565, #105437, #107762
+  * New upstream release. Closes: #117130
+  * Added if-pre-up.d script. Closes: #113128
+
+ -- Guus Sliepen <guus@sliepen.warande.net>  Tue, 20 Nov 2001 11:58:21 +0100
+
+wireless-tools (21+22beta2-0.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * New upstream release. Closes: #107762, #104565, #96229, #93904, #81295
+  * Show "mode" option. Closes: #103935
+  * Correct URL in README file. Closes: #91909
+  * Put binaries in /sbin since they might be required for booting properly.
+    Closes: #105437
+  * Added manpage for iwgetid.
+  * Fixed lintian warnings and errors.
+
+ -- Guus Sliepen <guus@sliepen.warande.net>  Tue,  7 Aug 2001 11:57:07 +0200
+
+wireless-tools (20-1.1) unstable; urgency=low
+
+  * Bugsquash party NMU to fix a release-critical bug.
+  * Patch from Gerhard Muntingh <smunt@dds.nl> to avoid using <linux/in.h>
+    (closes: #90421).
+
+ -- Colin Watson <cjwatson@debian.org>  Sat, 14 Apr 2001 00:49:19 +0100
+
+wireless-tools (20-1) unstable; urgency=low
+
+  * initial release
+  * Sponsored upload for Björn Andersson <bjorn@lifix.fi>
+
+ -- Joey Hess <joeyh@debian.org>  Sat,  1 Apr 2000 11:55:23 +0300
+
+Local variables:
+mode: debian-changelog
+End:
+

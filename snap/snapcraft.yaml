@@ -1,0 +1,91 @@
+name: kiyanetwork
+base: core20 
+version: '3.0.0'
+summary: network performance test tool
+description: |
+  This is iperf, a tool for measuring network throughput
+
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+
+apps:
+  iperf:
+    command: usr/local/bin/iperf3
+    environment:
+      LD_LIBRARY_PATH: 
+        $SNAP/usr/local/lib
+    plugs:
+    - network
+    - network-observe
+
+  iw:
+    command: usr/sbin/iw
+    plugs:
+    - network
+    - network-observe
+
+  iwconfig:
+    command: usr/sbin/iwconfig
+    environment:
+      LD_LIBRARY_PATH:
+        $SNAP/usr/$SNAPCRAFT_ARCH_TRIPLET/lib
+    plugs:
+    - network
+    - network-observe
+
+  iwevent:
+    command: usr/sbin/iwevent
+    environment:
+      LD_LIBRARY_PATH: 
+        $SNAP/usr/$SNAPCRAFT_ARCH_TRIPLET/lib
+    plugs:
+    - network
+    - network-observe
+
+  iwlist:
+    command: usr/sbin/iwlist
+    environment:
+      LD_LIBRARY_PATH: 
+        $SNAP/usr/$SNAPCRAFT_ARCH_TRIPLET/lib
+    plugs:
+    - network
+    - network-observe
+
+  iwprive:
+    command: usr/sbin/iwpriv
+    environment:
+      LD_LIBRARY_PATH: 
+        $SNAP/usr/$SNAPCRAFT_ARCH_TRIPLET/lib
+    plugs:
+    - network
+    - network-observe
+
+
+
+
+
+
+parts:
+  iperf:
+    plugin: autotools
+    source: https://github.com/esnet/iperf.git
+
+  iw:
+    plugin: make
+    source: iw-5.16.tar.gz
+
+  iwpriv:
+    plugin: make
+    source: wireless-tools
+    override-build: |
+     make
+     mkdir -p ../install/usr/sbin
+     mkdir -p ../install/usr/$SNAPCRAFT_ARCH_TRIPLET/lib
+     cp iwconfig ../install/usr/sbin
+     cp iwevent ../install/usr/sbin
+     cp iwlist ../install/usr/sbin
+     cp iwpriv ../install/usr/sbin
+     cp libiw.so.30 ../install/usr/$SNAPCRAFT_ARCH_TRIPLET/lib
+
+
+

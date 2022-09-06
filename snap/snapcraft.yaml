@@ -1,6 +1,6 @@
 name: kiyanetwork
-base: core20 
-version: '3.0.1'
+base: core22
+version: '4.0.1'
 summary: network performance test tool
 description: |
   This is iperf, a tool for measuring network throughput
@@ -70,6 +70,8 @@ parts:
   iperf:
     plugin: autotools
     source: https://github.com/esnet/iperf.git
+    stage-packages:
+    - openssl
 
   iw:
     plugin: make

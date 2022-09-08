@@ -69,17 +69,17 @@ apps:
 parts:
   iperf:
     plugin: autotools
-    source: https://github.com/esnet/iperf.git
+    source: source/iperf
     stage-packages:
     - openssl
 
   iw:
     plugin: make
-    source: iw-5.16.tar.gz
+    source: source/iw-5.16
 
   iwpriv:
     plugin: make
-    source: wireless-tools
+    source: source/wireless-tools
     override-build: |
      make
      mkdir -p ../install/usr/sbin

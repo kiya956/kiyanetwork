@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -120,6 +120,8 @@
+ 	@$(NQ) ' INST iw'
+ 	$(Q)$(MKDIR) $(DESTDIR)$(SBINDIR)
+ 	$(Q)$(INSTALL) -m 755 iw $(DESTDIR)$(SBINDIR)
++	$(Q)$(INSTALL) -m 755 hello $(DESTDIR)$(SBINDIR)
++	$(Q)$(INSTALL)  postinst debian
+ 	@$(NQ) ' INST iw.8'
+ 	$(Q)$(MKDIR) $(DESTDIR)$(MANDIR)/man8/
+ 	$(Q)$(INSTALL) -m 644 iw.8.gz $(DESTDIR)$(MANDIR)/man8/
+--- /dev/null
++++ b/hello
+@@ -0,0 +1,2 @@
++#! /bin/bash
++echo "=======Hello~~~~ This is a quilt training======="
+--- /dev/null
++++ b/postinst
+@@ -0,0 +1,2 @@
++#! /bin/bash
++hello
